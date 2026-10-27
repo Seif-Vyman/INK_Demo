@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# INKORA — Front-end E-commerce Demo
 
-## Getting Started
+A pixel-accurate Next.js App Router storefront built from Figma. Front-end only — no backend, database, or authentication. Cart and wishlist are persisted in localStorage.
 
-First, run the development server:
+## Tech
+- Next.js 16.4.3 (App Router, Cache Components, Partial Prefetching)
+- React 19.3
+- TypeScript
+- Tailwind CSS v4
+- Zustand
+- next/font (Geist)
 
+## Getting started
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Open http://localhost:3000
+
+## Build
+```bash
+npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Add a product
+Edit `data/products.ts`. Drop images into `public/products/`. Add a product object with a unique `slug`. It will automatically appear on `/shop`, filters, search, related products, and its own page at `/product/[slug]`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Re-theme
+Update design tokens in `src/app/globals.css` under `@theme`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Replace logo/images
+Update `siteConfig.logo` in `data/site-config.ts`, or swap files in `public/`.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy
+Zero-config deploy to Vercel. Push to a Git repo and import the `frontend/` directory as the project root.

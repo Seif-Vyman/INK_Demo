@@ -1,26 +1,154 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * ─────────────────────────────────────────────────────────────
+ *  INKORA design tokens
+ *  Change the values in this block to re-theme the whole store.
+ *  Colours, type, radii and spacing all live here.
+ * ─────────────────────────────────────────────────────────────
+ */
+@theme {
+  /* Colour */
+  --color-cream: #f8f7f2;
+  --color-ink: #202823;
+  --color-ink-soft: #3b453e;
+  --color-muted: #626262;
+  --color-line: #e4e2da;  --color-line-strong: #d5d2c7;
+
+  --color-lilac: #ccd3f5;
+  --color-lilac-soft: #e9e0f3;
+  --color-sky: #e1edf4;
+  --color-sage: #dfecdc;
+  --color-sage-soft: #dde8e0;
+  --color-tan: #c4bb9c;
+  --color-lime: #d8f36a;
+
+  --color-forest: #2f4a36;
+  --color-cobalt: #2a3cc9;
+  --color-lilac-swatch: #b9a9d8;
+  --color-ice: #c7dde6;
+
+  /* Type */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --text-eyebrow: 0.625rem;
+  --text-eyebrow--line-height: 1.3;
+  --text-eyebrow--letter-spacing: 0.09em;
+
+  --text-micro: 0.8125rem;
+  --text-micro--line-height: 1.45;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.55;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.6;
+
+  --text-lead: 1.0625rem;
+  --text-lead--line-height: 1.55;
+
+  --text-h3: clamp(1.375rem, 1.95vw, 1.75rem);
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.02em;
+
+  --text-h2: clamp(2rem, 3.05vw, 2.75rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.025em;
+
+  --text-display: clamp(3rem, 5.3vw, 4.75rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.035em;
+
+  /* Radii */
+  --radius-card: 1rem;
+  --radius-media: 0.5rem;
+  --radius-pill: 999px;
+
+  /* Layout rhythm */
+  --spacing-gutter: clamp(1.25rem, 4.1vw + 0.25rem, 3.9375rem);
+  --spacing-section: clamp(3.5rem, 5.6vw, 5rem);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    min-width: 0;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    -webkit-text-size-adjust: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-lime);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Page shell: 1440px max, 64px desktop gutter */
+  .shell {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  /* Small uppercase label used above section headings */
+  .eyebrow {
+    font-size: var(--text-eyebrow);
+    line-height: var(--text-eyebrow--line-height);
+    letter-spacing: var(--text-eyebrow--letter-spacing);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .link-underline {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
